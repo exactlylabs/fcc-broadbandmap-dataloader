@@ -5,10 +5,36 @@ CREATE TABLE IF NOT EXISTS bdc (
   location_id VARCHAR,
   block_fips VARCHAR,
   h3index_hex8 VARCHAR,
-  technology_code VARCHAR,
-  max_advertised_download_speed VARCHAR,
-  max_advertised_upload_speed VARCHAR,
-  low_latency VARCHAR,
+  technology_code int,
+  max_advertised_download_speed int,
+  max_advertised_upload_speed int,
+  low_latency int,
   business_residential_code VARCHAR
-)
+);
 
+CREATE TABLE IF NOT EXISTS bdc_summary (
+  geography_type VARCHAR,
+  geography_id VARCHAR,
+  geography_desc VARCHAR,
+  geography_desc_full VARCHAR,
+  fixed_res_dl0_ul0_pct DECIMAL,
+  fixed_bus_dl0_ul0_pct DECIMAL,
+  fixed_res_dl10_ul1_pct DECIMAL,
+  fixed_bus_dl10_ul1_pct DECIMAL,
+  fixed_res_dl25_ul3_pct DECIMAL,
+  fixed_bus_dl25_ul3_pct DECIMAL,
+  fixed_res_dl100_ul20_pct DECIMAL,
+  fixed_bus_dl100_ul20_pct DECIMAL,
+  fixed_res_dl250_ul25_pct DECIMAL,
+  fixed_bus_dl250_ul25_pct DECIMAL,
+  fixed_res_dl1000_ul100_pct DECIMAL,
+  fixed_bus_dl1000_ul100_pct DECIMAL,
+  mobile_st_3g_area_pct DECIMAL,
+  mobile_iv_3g_area_pct DECIMAL,
+  mobile_st_4g_area_pct DECIMAL,
+  mobile_iv_4g_area_pct DECIMAL,
+  mobile_st_5g_dl7_ul1_area_pct DECIMAL,
+  mobile_iv_5g_dl7_ul1_area_pct DECIMAL,
+  mobile_st_5g_dl35_ul3_area_pct DECIMAL,
+  mobile_iv_5g_dl35_ul3_area_pct DECIMAL
+);
