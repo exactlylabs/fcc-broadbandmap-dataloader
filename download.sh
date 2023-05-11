@@ -2,12 +2,12 @@
 
 set -e
 
-export NBM_PROCESS_ID=$(curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' https://broadbandmap.fcc.gov/nbm/map/api/published/filing | jq --raw-output ".data[0].process_uuid")
+NBM_PROCESS_ID=$(curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' https://broadbandmap.fcc.gov/nbm/map/api/published/filing | jq --raw-output ".data[0].process_uuid")
 
-export RAW_JSON=$(curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' https://broadbandmap.fcc.gov/nbm/map/api/national_map_process/nbm_get_data_download/$NBM_PROCESS_ID)
+RAW_JSON=$(curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' https://broadbandmap.fcc.gov/nbm/map/api/national_map_process/nbm_get_data_download/$NBM_PROCESS_ID)
 
-export FILE_ID_LIST=$(echo $RAW_JSON | jq '.data[] | select(.data_type=="Fixed Broadband" and .state_fips!=null) | .id')
-export NATIONAL_SUMMARY_ID=$(echo $RAW_JSON | jq '.data[] | select(.data_type=="Broadband Summary by Geography Type") | .id')
+FILE_ID_LIST=$(echo $RAW_JSON | jq '.data[] | select(.data_type=="Fixed Broadband" and .state_fips!=null) | .id')
+NATIONAL_SUMMARY_ID=$(echo $RAW_JSON | jq '.data[] | select(.data_type=="Broadband Summary by Geography Type") | .id')
 
 mkdir -p ./working/states ./working/national
 
