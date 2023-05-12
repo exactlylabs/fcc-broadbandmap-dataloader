@@ -78,7 +78,7 @@ sync_files() {
     # filename if needed
     fetch_and_store "$FILE_DOWNLOAD_ENDPOINT_W_FILE_ID" "$SYNC_DIRECTORY" "${FILE_ID}.zip"
 
-    unzip -t "$SYNC_DIRECTORY/$FILE_ID.zip" > $LOG_FILE_PATH
+    unzip -t "$SYNC_DIRECTORY/$FILE_ID.zip" >> $LOG_FILE_PATH
 
     echo "${PROCESS_ID},${LAST_UPDATED_DATE},${FILE_ID},${EPOCH}" >> $INDEX_FILE_PATH
 
