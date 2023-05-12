@@ -3,19 +3,14 @@
 set -e
 
 # Configuration
-STORAGE_DIRECTORY="${STORAGE_DIRECTORY:=./storage}"
-SIMULATED_USER_AGENT="${SIMULATED_USER_AGENT:=user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36}"
+MY_DIRECTORY=$(dirname "${BASH_SOURCE[0]}")
+source $MY_DIRECTORY/config.sh
 
 # Working variables
 FILING_ENDPOINT=https://broadbandmap.fcc.gov/nbm/map/api/published/filing
 MAP_PROCESSING_UPDATES_ENDPOINT=https://broadbandmap.fcc.gov/api/reference/map_processing_updates/NBM_PROCESS_ID
 FILE_INDEX_ENDPOINT=https://broadbandmap.fcc.gov/nbm/map/api/national_map_process/nbm_get_data_download/NBM_PROCESS_ID
 FILE_DOWNLOAD_ENDPOINT=https://broadbandmap.fcc.gov/nbm/map/api/getNBMDataDownloadFile/FILE_ID/1
-
-METADATA_DIR=$STORAGE_DIRECTORY/metadata
-FILES_DIR=$STORAGE_DIRECTORY/files
-INDEX_FILE_PATH=$STORAGE_DIRECTORY/index.csv
-LOG_FILE_PATH=$STORAGE_DIRECTORY/sync.log
 
 EPOCH=$(date +%s)
 
