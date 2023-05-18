@@ -51,7 +51,7 @@ for FILE_ID in ${FILE_IDS_FROM_INDEX}; do
   FILE_INDEX_SIGNATURE="${TARGET_PROCESS_ID},${TARGET_UPDATED_DATE},${FILE_ID}"
   if ! grep -Fq "$FILE_INDEX_SIGNATURE" $INDEX_FILE_PATH
   then
-    echo "Couldn't find a file downloaded with the index ${FILD_ID} for the given process id and updated date"
+    echo "Couldn't find a file downloaded with the index ${FILE_ID} for the given process id and updated date"
     exit 1
   fi
 done
