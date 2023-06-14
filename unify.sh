@@ -65,14 +65,15 @@ for FILE_ID in ${FILE_IDS_FROM_INDEX}; do
   unzip $TARGET_FILES_DIR/$FILE_ID.zip -d $UNZIP_TEMP_DIR >> $LOG_FILE_PATH
   DATA_FILE=$(find $UNZIP_TEMP_DIR -type f -name "*.csv" | tail -n 1)
 
-  cat $DATA_FILE >> $TEMP_DIR/output.csv
-
+  #cat $DATA_FILE >> $TEMP_DIR/output.csv
+  #added this line to remove field headers from files before they're merged
+  tail -n +2 $DATA_FILE >> $TEMP_DIR/output.csv
   #while read LINE
   #do
   #  echo $LINE >> $TEMP_DIR/output.csv
   #done < <(tail -n +2 ${DATA_FILE})
 
-  rm $DATA_FILE
+  #rm $DATA_FILE
 
   let "COUNT+=1"
   echo "Processed ${COUNT} of $(wc -l <<< "$FILE_IDS_FROM_INDEX" | tr -d '[:space:]')"
