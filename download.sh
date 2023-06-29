@@ -2,7 +2,7 @@
 
 set -e
 
-NBM_PROCESS_ID=$(curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' https://broadbandmap.fcc.gov/nbm/map/api/published/filing | jq --raw-output ".data[0].process_uuid")
+NBM_PROCESS_ID=$(curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' https://broadbandmap.fcc.gov/nbm/map/api/published/filing | jq --raw-output ".data[1].process_uuid")
 
 RAW_JSON=$(curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' https://broadbandmap.fcc.gov/nbm/map/api/national_map_process/nbm_get_data_download/$NBM_PROCESS_ID)
 
